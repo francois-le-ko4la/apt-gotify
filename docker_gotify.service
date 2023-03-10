@@ -1,0 +1,13 @@
+[Unit]
+Description=Reboot notifications
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/scripts/notification.py --title "Docker up & runing" --message "Docker has been restarted." --prio 0
+ExecStop=/opt/scripts/notification.py --title "Reboot in progress" --message "Reboot in progress..." --prio 10
+
+[Install]
+WantedBy=multi-user.target

@@ -28,13 +28,17 @@ def get_argparser() -> argparse.ArgumentParser:
     action = parser.add_mutually_exclusive_group(required=True)
     action.add_argument(
         '--message',
-        dest='message', help="JSON Keyfile", default=None)
+        dest='message', help="Message to send", default=None)
     action.add_argument(
         '--notify-update',
-        help='Deactivate SSL Verification', default=False, action="store_true")
+        help='Message to notify an update',
+        default=False,
+        action="store_true")
     action.add_argument(
         '--notify-reboot',
-        help='Logging on', default=False, action="store_true")
+        help='Message to notify a required reboot',
+        default=False,
+        action="store_true")
     return parser
 
 

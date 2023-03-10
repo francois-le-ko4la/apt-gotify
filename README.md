@@ -1,20 +1,77 @@
 # apt-gotify
-
+## Goal
+Get apt notification after apt update/upgrade and get a notification when you need to reboot the server.
 
 ## Setup
+- Copy files:
 ```
-git clone https://github.com/francois-le-ko4la/apt-gotify.git
-cd apt-gotify/
 sudo pip3 install gotify
+git clone https://github.com/francois-le-ko4la/rasp-gotify.git
+cd rasp-gotify/
 sudo mkdir -p /opt/scripts
 sudo cp apt_gotify.py /opt/scripts
+sudo cp 50gotify /etc/apt/apt.conf.d/
 sudo chmod +x /opt/scripts/apt_gotify.py
 ```
 
-`/etc/apt/apt.conf.d/50gotify`
+- Edit and customize `/opt/scripts/apt_gotify.py`:
 ```
-APT::Update::Pre-Invoke {"/opt/scripts/apt_gotify.py --message 'Check update'"};
-APT::Update::Post-Invoke {"/opt/scripts/apt_gotify.py --notify-update"};
-DPkg::Post-Invoke {"/opt/scripts/apt_gotify.py --message 'Update done!'"};
-DPkg::Post-Invoke {"/opt/scripts/apt_gotify.py --notify-reboot"};
+URL = "https://url:443"
+TOKEN = "XXXXX"
+```
+
+# docker-gotify
+## Goal
+Get a notification when you restart your docker environment.
+
+## Setup
+- Copy files:
+```
+sudo pip3 install gotify
+git clone https://github.com/francois-le-ko4la/rasp-gotify.git
+cd rasp-gotify/
+sudo cp docker_gotify.service /etc/systemd/system
+sudo mkdir -p /opt/scripts
+cp notification.py /opt/scripts
+sudo chmod +x /opt/scripts/notification.py
+```
+
+- Edit and customize `/opt/scripts/notification.py`
+```
+URL = "https://url:443"
+TOKEN = "XXXXX"
+```
+
+- Start the service:
+```
+sudo systemctl enable docker_gotify.service
+sudo systemctl start docker_gotify.service
+```
+
+# Certbot
+## Goal
+Regular certificate generation with Cerbot/Docker.
+
+## Setup
+- Copy files:
+```
+git clone https://github.com/francois-le-ko4la/rasp-gotify.git
+cd rasp-gotify/
+sudo cp letsencrypt.* /etc/systemd/system
+sudo mkdir -p /opt/scripts
+cp certbot_renew.sh /opt/scripts
+sudo chmod +x /opt/scripts/certbot_renew.sh
+```
+
+- Edit and customize `/opt/scripts/certbot_renew.sh`:
+```
+URL="https://url:443"
+TOKEN="XXXXX"
+CERT="/etc/letsencrypt/live/<domain>/fullchain.pem"
+```
+
+- Start the service:
+```
+sudo systemctl enable letsencrypt.timer
+sudo systemctl start letsencrypt.timer
 ```

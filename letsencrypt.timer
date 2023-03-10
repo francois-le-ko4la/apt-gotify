@@ -1,0 +1,10 @@
+[Unit]
+Description=Weekly renewal of Let's Encrypt's certificates
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+Unit=letsencrypt.service
+
+[Install]
+WantedBy=timers.target
