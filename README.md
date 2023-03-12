@@ -75,3 +75,29 @@ CERT="/etc/letsencrypt/live/<domain>/fullchain.pem"
 sudo systemctl enable letsencrypt.timer
 sudo systemctl start letsencrypt.timer
 ```
+
+# ssh-gotify
+## Goal
+
+Track SSH Login
+
+## Setup
+- Copy files:
+```
+git clone https://github.com/francois-le-ko4la/rasp-gotify.git
+cd rasp-gotify/
+sudo mkdir -p /opt/scripts
+cp ssh_gotify.py /opt/scripts
+sudo chmod +x /opt/scripts/ssh_gotify.py
+```
+
+- Edit and customize `/opt/scripts/ssh_gotify.py`:
+```
+URL = "https://url:443"
+TOKEN = "XXXXX"
+```
+
+- Edit `/etc/pam.d/sshd` and add:
+```
+session optional pam_exec.so /opt/scripts/ssh_gotify.py
+```
