@@ -1,0 +1,13 @@
+[Unit]
+Description=Reboot notifications
+After=network-online.target nss-lookup.target
+Wants=network-online.target nss-lookup.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/scripts/notification.py --title "up & runing" --message "Ubuntu has been restarted." --prio 0
+ExecStop=/opt/scripts/notification.py --title "Reboot in progress" --message "Reboot in progress..." --prio 10
+
+[Install]
+WantedBy=multi-user.target
