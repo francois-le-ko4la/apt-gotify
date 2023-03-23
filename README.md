@@ -20,6 +20,35 @@ URL = "https://url:443"
 TOKEN = "XXXXX"
 ```
 
+# reboot-gotify
+## Goal
+Get a notification when you restart your ubuntu environment.
+
+## Setup
+- Copy files:
+```
+sudo pip3 install gotify
+git clone https://github.com/francois-le-ko4la/rasp-gotify.git
+cd rasp-gotify/
+sudo cp reboot_gotify.service /etc/systemd/system
+sudo mkdir -p /opt/scripts
+cp notification.py /opt/scripts
+sudo chmod +x /opt/scripts/notification.py
+```
+
+- Edit and customize `/opt/scripts/notification.py`
+```
+URL = "https://url:443"
+TOKEN = "XXXXX"
+```
+
+- Start the service:
+```
+sudo systemctl enable reboot_gotify.service
+sudo systemctl start reboot_gotify.service
+```
+
+
 # docker-gotify
 ## Goal
 Get a notification when you restart your docker environment.
