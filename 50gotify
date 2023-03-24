@@ -1,4 +1,0 @@
-APT::Update::Pre-Invoke {"/opt/scripts/apt_gotify.py --message 'Check update'"};
-APT::Update::Post-Invoke {"/opt/scripts/apt_gotify.py --notify-update"};
-DPkg::Post-Invoke {"/opt/scripts/apt_gotify.py --message 'Update done!'"};
-DPkg::Post-Invoke {"/opt/scripts/apt_gotify.py --notify-reboot"};

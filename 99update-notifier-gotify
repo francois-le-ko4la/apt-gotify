@@ -1,0 +1,4 @@
+APT::Update::Post-Invoke-Success {"/opt/scripts/apt_gotify.py --notify-check-update-done"};
+APT::Update::Post-Invoke-Success {"/opt/scripts/apt_gotify.py --notify-update"};
+DPkg::Post-Invoke {"/opt/scripts/apt_gotify.py --notify-update-done"};
+DPkg::Post-Invoke {"/opt/scripts/apt_gotify.py --notify-reboot"};
