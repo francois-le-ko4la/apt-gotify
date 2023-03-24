@@ -10,7 +10,7 @@ git clone https://github.com/francois-le-ko4la/rasp-gotify.git
 cd rasp-gotify/
 sudo mkdir -p /opt/scripts
 sudo cp apt_gotify.py /opt/scripts
-sudo cp 50gotify /etc/apt/apt.conf.d/
+sudo cp 99update-notifier-gotify /etc/apt/apt.conf.d/
 sudo chmod +x /opt/scripts/apt_gotify.py
 ```
 
