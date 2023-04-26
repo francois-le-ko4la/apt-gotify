@@ -1,13 +1,14 @@
 [Unit]
-Description=Reboot notifications
-After=docker.service
-Requires=docker.service
+Description=Docker notifications
+After=docker.service network-online.target nss-lookup.target
+Requires=docker.service network-online.target nss-lookup.target
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/opt/scripts/notification.py --title "Docker up & runing" --message "Docker has been restarted." --prio 0
-ExecStop=/opt/scripts/notification.py --title "Reboot in progress" --message "Reboot in progress..." --prio 10
+ExecStartPre=/bin/sh -c 'until host google.com; do sleep 1; done'
+ExecStart=/opt/scripts/notification.py --title "Docker up & runing" --message "Docker has been started." --prio 0
+ExecStop=/opt/scripts/notification.py --title "Docker stopped" --message "Stop or reboot in progress..." --prio 10
 
 [Install]
 WantedBy=multi-user.target
