@@ -6,7 +6,8 @@ Wants=network-online.target nss-lookup.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/opt/scripts/notification.py --title "up & runing" --message "Ubuntu has been restarted." --prio 0
+ExecStartPre=/bin/sh -c 'until host google.com; do sleep 1; done'
+ExecStart=/opt/scripts/notification.py --title "Up & runing" --message "Ubuntu has been restarted." --prio 0
 ExecStop=/opt/scripts/notification.py --title "Reboot in progress" --message "Reboot in progress..." --prio 10
 
 [Install]
