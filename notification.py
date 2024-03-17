@@ -6,13 +6,13 @@ This script allow apt notifications to a gotify server.
 
 import argparse
 import platform
-
-from gotify import Gotify
+import requests
 
 
 URL = "https://www.url.fr:443"
 TOKEN = "XXX"
-__VERSION__ = "0.1.0"
+APP = URL + '/message?token=' + TOKEN
+__VERSION__ = "0.1.1"
 
 
 def get_argparser() -> argparse.ArgumentParser:
@@ -37,8 +37,12 @@ def get_argparser() -> argparse.ArgumentParser:
 
 if __name__ == "__main__":
     args = get_argparser().parse_args()
-    notification = Gotify(base_url=URL, app_token=TOKEN)
     
-    notification.create_message(args.message,
-                                title=f"{platform.node()}: {args.title}",
-                                priority=args.prio)
+    try:
+        resp = requests.post(APP, json={
+            "message": "Well hello there.",
+            "priority": 2,
+            "title": f"{platform.node()}: {args.title}"
+        }, timeout=1)
+    except requests.exceptions.Timeout as errt:
+        print ("Timeout Error:",errt)
