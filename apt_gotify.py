@@ -11,8 +11,7 @@ import platform
 from pathlib import Path
 import re
 from enum import Enum, unique
-
-from gotify import Gotify
+import requests
 
 
 URL = "https://xxxxxx:443"
@@ -74,7 +73,7 @@ class MyNotification:
         """Initialize and setup values."""
         self.__message = ""
         self.__title = ""
-        self.__gotify = Gotify(base_url=URL, app_token=TOKEN)
+        self.__gotify = URL + '/message?token=' + TOKEN
         self.__valid = False
         func = getattr(self, f"_MyNotification__{cmd}", None)
         if func:
@@ -85,9 +84,14 @@ class MyNotification:
     def send(self) -> None:
         """Send notification."""
         if self.__valid:
-            self.__gotify.create_message(self.__message,
-                                         title=self.__title,
-                                         priority=0)
+            try:
+                resp = requests.post(self.__gotify, json={
+                    "message": self.__message,
+                    "priority": 0,
+                    "title": self.__title
+                }, timeout=1)
+            except requests.exceptions.Timeout as errt:
+                print ("Timeout Error:",errt)
 
     @staticmethod
     def __build_title(title: str) -> str:
