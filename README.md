@@ -29,7 +29,7 @@ Gotify is a self-hosted notification server that allows you to send and receive 
 
 With our notification scripts, harness the power of Gotify to enhance the functionality and efficiency of your Raspberry Pi projects. Whether you're a hobbyist, maker, or professional developer, our solution provides a reliable and scalable notification infrastructure tailored to your requirements.
 
-## Pre requisites (VENV)
+## Global pre requisite (VENV)
 
 To be able to launch our scripts we need a python venv:
 
