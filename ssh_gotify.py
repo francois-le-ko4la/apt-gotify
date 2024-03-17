@@ -8,21 +8,25 @@ Add this line at the end of /etc/pam.d/sshd:
 
 import os
 import platform
-
-from gotify import Gotify
+import requests
 
 
 URL = "https://url:8143"
 TOKEN = "XXXX"
+APP = URL + '/message?token=' + TOKEN
 __VERSION__ = "0.1.0"
 
 
 if __name__ == "__main__":
     if os.environ.get('PAM_TYPE') == "open_session":
-        notification = Gotify(base_url=URL, app_token=TOKEN)
         user = os.environ.get('PAM_USER')
         rhost = os.environ.get('PAM_RHOST')
         message = f"SSH login: {user} from {rhost}"
-        notification.create_message(message,
-                                    title=f"{platform.node()}: SSH login",
-                                    priority=5)
+        try:
+            resp = requests.post(APP, json={
+                "message": message,
+                "priority": 5,
+                "title": f"{platform.node()}: SSH login"
+            }, timeout=1)
+        except requests.exceptions.Timeout as errt:
+            print ("Timeout Error:",errt)
