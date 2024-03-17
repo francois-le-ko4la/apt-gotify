@@ -40,8 +40,8 @@ if __name__ == "__main__":
     
     try:
         resp = requests.post(APP, json={
-            "message": "Well hello there.",
-            "priority": 2,
+            "message": args.message,
+            "priority": args.prio,
             "title": f"{platform.node()}: {args.title}"
         }, timeout=1)
     except requests.exceptions.Timeout as errt:
