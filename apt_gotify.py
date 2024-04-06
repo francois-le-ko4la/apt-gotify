@@ -12,10 +12,12 @@ from pathlib import Path
 import re
 from enum import Enum, unique
 import requests
+from dotenv import load_dotenv
 
 
-URL = "https://xxxxxx:443"
-TOKEN = "XXXX"
+load_dotenv()
+URL = os.getenv('GOTIFY_URL')
+TOKEN = os.getenv('GOTIFY_TOKEN')
 __VERSION__ = "0.1.0"
 
 
