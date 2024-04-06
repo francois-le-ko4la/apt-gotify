@@ -41,6 +41,7 @@ This quick installation allow you to get:
 ```
 sudo curl https://raw.githubusercontent.com/francois-le-ko4la/rasp-gotify/main/setup_got.sh | sudo sh
 ```
+Edit and customize `/opt/scripts/.env`.
 
 ### Global pre requisite (VENV)
 
