@@ -40,6 +40,12 @@ pip install requests
 deactivate
 ```
 
+Edit and customize `/opt/scripts/.env`:
+```
+GOTIFY_URL = "https://XXX:8143"
+GOTIFY_TOKEN = "AfnXCW6k1vlcDrD"
+```
+
 # apt-gotify
 ## Goal
 Get apt notification after apt update/upgrade and get a notification when you need to reboot the server.
@@ -55,12 +61,6 @@ sudo cp 99update-notifier-gotify /etc/apt/apt.conf.d/
 sudo chmod +x /opt/scripts/apt_gotify.py
 ```
 
-- Edit and customize `/opt/scripts/apt_gotify.py`:
-```
-URL = "https://url:443"
-TOKEN = "XXXXX"
-```
-
 # reboot-gotify
 ## Goal
 Get a notification when you restart your ubuntu environment.
@@ -74,12 +74,6 @@ sudo cp reboot_gotify.service /etc/systemd/system
 sudo mkdir -p /opt/scripts
 cp notification.py /opt/scripts
 sudo chmod +x /opt/scripts/notification.py
-```
-
-- Edit and customize `/opt/scripts/notification.py`
-```
-URL = "https://url:443"
-TOKEN = "XXXXX"
 ```
 
 - Start the service:
@@ -102,12 +96,6 @@ sudo cp docker_gotify.service /etc/systemd/system
 sudo mkdir -p /opt/scripts
 cp notification.py /opt/scripts
 sudo chmod +x /opt/scripts/notification.py
-```
-
-- Edit and customize `/opt/scripts/notification.py`
-```
-URL = "https://url:443"
-TOKEN = "XXXXX"
 ```
 
 - Start the service:
@@ -157,12 +145,6 @@ cd rasp-gotify/
 sudo mkdir -p /opt/scripts
 cp ssh_gotify.py /opt/scripts
 sudo chmod +x /opt/scripts/ssh_gotify.py
-```
-
-- Edit and customize `/opt/scripts/ssh_gotify.py`:
-```
-URL = "https://url:443"
-TOKEN = "XXXXX"
 ```
 
 - Edit `/etc/pam.d/sshd` and add:
