@@ -36,7 +36,7 @@ To be able to launch our scripts we need a python venv:
 ```
 python3 -m venv /opt/scripts/venv
 source /opt/scripts/venv/bin/activate
-pip install requests
+pip install requests python-dotenv
 deactivate
 ```
 
