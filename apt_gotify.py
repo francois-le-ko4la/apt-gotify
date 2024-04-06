@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/opt/scripts/venv/bin/python3
 # -*- coding: utf-8 -*-
 """
 This script allow apt notifications to a gotify server.
@@ -158,3 +158,4 @@ if __name__ == "__main__":
     args = get_argparser().parse_args()
     notif = MyNotification(args.cmd)
     notif.send()
+    
