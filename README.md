@@ -18,6 +18,7 @@ Gotify is a self-hosted notification server that allows you to send and receive 
 - APT notification
 - reboot notification
 - certbot notificaiotn
+- docker reboot notification
   
 **How to Get Started:**
 
@@ -29,7 +30,19 @@ Gotify is a self-hosted notification server that allows you to send and receive 
 
 With our notification scripts, harness the power of Gotify to enhance the functionality and efficiency of your Raspberry Pi projects. Whether you're a hobbyist, maker, or professional developer, our solution provides a reliable and scalable notification infrastructure tailored to your requirements.
 
-## Global pre requisite (VENV)
+## Installation
+### Quick set up
+
+This quick installation allow you to get:
+- SSH notification
+- APT notification
+- reboot notification
+
+```
+sudo curl https://raw.githubusercontent.com/francois-le-ko4la/rasp-gotify/main/setup_got.sh | sudo sh
+```
+
+### Global pre requisite (VENV)
 
 To be able to launch our scripts we need a python venv:
 
@@ -46,11 +59,11 @@ GOTIFY_URL = "https://XXX:8143"
 GOTIFY_TOKEN = "XXX"
 ```
 
-# apt-gotify
-## Goal
+### apt-gotify
+**Goal**:
 Get apt notification after apt update/upgrade and get a notification when you need to reboot the server.
 
-## Setup
+**Setup**
 - Copy files:
 ```
 git clone https://github.com/francois-le-ko4la/rasp-gotify.git
@@ -61,11 +74,11 @@ sudo cp 99update-notifier-gotify /etc/apt/apt.conf.d/
 sudo chmod +x /opt/scripts/apt_gotify.py
 ```
 
-# reboot-gotify
-## Goal
+### reboot-gotify
+**Goal**:
 Get a notification when you restart your ubuntu environment.
 
-## Setup
+**Setup**
 - Copy files:
 ```
 git clone https://github.com/francois-le-ko4la/rasp-gotify.git
@@ -83,11 +96,11 @@ sudo systemctl start reboot_gotify.service
 ```
 
 
-# docker-gotify
-## Goal
+### docker-gotify
+**Goal**:
 Get a notification when you restart your docker environment.
 
-## Setup
+**Setup**
 - Copy files:
 ```
 git clone https://github.com/francois-le-ko4la/rasp-gotify.git
@@ -104,11 +117,11 @@ sudo systemctl enable docker_gotify.service
 sudo systemctl start docker_gotify.service
 ```
 
-# Certbot
-## Goal
+### Certbot
+**Goal**:
 Regular certificate generation with Cerbot/Docker.
 
-## Setup
+**Setup**
 - Copy files:
 ```
 git clone https://github.com/francois-le-ko4la/rasp-gotify.git
@@ -132,12 +145,11 @@ sudo systemctl enable letsencrypt.timer
 sudo systemctl start letsencrypt.timer
 ```
 
-# ssh-gotify
-## Goal
-
+### ssh-gotify
+**Goal**:
 Track SSH Login
 
-## Setup
+**Setup**
 - Copy files:
 ```
 git clone https://github.com/francois-le-ko4la/rasp-gotify.git
