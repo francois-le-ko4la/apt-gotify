@@ -5,7 +5,7 @@ TOKEN="XXXXX"
 CERT="/etc/letsencrypt/live/<domain>/fullchain.pem"
 
 MD5_OLD=$(md5sum $CERT | cut -d' ' -f1)
-/usr/bin/docker-compose -f /opt/certbot/docker-compose.yml up
+docker start certbot
 MD5_NEW=$(md5sum $CERT | cut -d' ' -f1)
 INFO=$(cat /var/log/letsencrypt/letsencrypt.log | grep INFO | cut -d: -f6)
 
