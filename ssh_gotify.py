@@ -9,10 +9,12 @@ Add this line at the end of /etc/pam.d/sshd:
 import os
 import platform
 import requests
+from dotenv import load_dotenv
 
 
-URL = "https://url:8143"
-TOKEN = "XXXX"
+load_dotenv()
+URL = os.getenv('GOTIFY_URL')
+TOKEN = os.getenv('GOTIFY_TOKEN')
 APP = URL + '/message?token=' + TOKEN
 __VERSION__ = "0.1.0"
 
