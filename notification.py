@@ -4,12 +4,16 @@
 This script allow apt notifications to a gotify server.
 """
 
+import os
 import argparse
 import platform
 import requests
+from dotenv import load_dotenv
 
-URL = "https://www.url.fr:443"
-TOKEN = "XXX"
+
+load_dotenv()
+URL = os.getenv('GOTIFY_URL')
+TOKEN = os.getenv('GOTIFY_TOKEN')
 APP = URL + '/message?token=' + TOKEN
 __VERSION__ = "0.1.1"
 
