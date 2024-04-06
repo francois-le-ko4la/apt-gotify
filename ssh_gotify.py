@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/opt/scripts/venv/bin/python3
 # -*- coding: utf-8 -*-
 """
 This script allow ssh login notifications to a gotify server.
