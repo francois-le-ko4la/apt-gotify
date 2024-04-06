@@ -47,7 +47,6 @@ Get apt notification after apt update/upgrade and get a notification when you ne
 ## Setup
 - Copy files:
 ```
-sudo pip3 install gotify
 git clone https://github.com/francois-le-ko4la/rasp-gotify.git
 cd rasp-gotify/
 sudo mkdir -p /opt/scripts
@@ -69,7 +68,6 @@ Get a notification when you restart your ubuntu environment.
 ## Setup
 - Copy files:
 ```
-sudo pip3 install gotify
 git clone https://github.com/francois-le-ko4la/rasp-gotify.git
 cd rasp-gotify/
 sudo cp reboot_gotify.service /etc/systemd/system
@@ -98,7 +96,6 @@ Get a notification when you restart your docker environment.
 ## Setup
 - Copy files:
 ```
-sudo pip3 install gotify
 git clone https://github.com/francois-le-ko4la/rasp-gotify.git
 cd rasp-gotify/
 sudo cp docker_gotify.service /etc/systemd/system
