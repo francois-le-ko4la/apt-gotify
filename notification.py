@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/opt/scripts/venv/bin/python3
 # -*- coding: utf-8 -*-
 """
 This script allow apt notifications to a gotify server.
@@ -7,7 +7,6 @@ This script allow apt notifications to a gotify server.
 import argparse
 import platform
 import requests
-
 
 URL = "https://www.url.fr:443"
 TOKEN = "XXX"
