@@ -43,7 +43,7 @@ deactivate
 Edit and customize `/opt/scripts/.env`:
 ```
 GOTIFY_URL = "https://XXX:8143"
-GOTIFY_TOKEN = "AfnXCW6k1vlcDrD"
+GOTIFY_TOKEN = "XXX"
 ```
 
 # apt-gotify
