@@ -47,5 +47,9 @@ if __name__ == "__main__":
             "priority": args.prio,
             "title": f"{platform.node()}: {args.title}"
         }, timeout=1)
-    except requests.exceptions.Timeout as errt:
-        print ("Timeout Error:",errt)
+        resp.raise_for_status()
+    except (requests.exceptions.HTTPError,
+            requests.exceptions.ConnectionError,
+            requests.exceptions.Timeout,
+            requests.exceptions.RequestException, Exception) as err:
+        print ("Error:", err)
